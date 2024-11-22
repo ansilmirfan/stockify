@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: TabBarView(children: [
           HomeView(),
           const WatchList(),

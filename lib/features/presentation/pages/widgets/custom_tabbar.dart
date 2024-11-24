@@ -9,7 +9,6 @@ class CustomTabbar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TabBar(
-       
         tabs: [
           _tabarItem(Icons.home, 'Home'),
           _tabarItem(Icons.bookmark, 'Watch List')

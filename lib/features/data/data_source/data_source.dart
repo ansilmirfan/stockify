@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:stockify/features/core/exceptions/exceptions.dart';
+import 'package:stockify/core/exceptions/exceptions.dart';
 
 final Dio dio = Dio();
 

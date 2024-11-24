@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:stockify/features/presentation/provider/api_data.dart';
+
 
 class CustomTextfromField extends StatelessWidget {
   final TextEditingController controller;
+  final void Function(String)? onChanged;
 
-  const CustomTextfromField({super.key, required this.controller});
+  const CustomTextfromField(
+      {super.key, required this.controller, required this.onChanged});
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,7 @@ class CustomTextfromField extends StatelessWidget {
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },
-          onChanged: (value) {
-            context.read<ApiData>().search(value);
-          },
+          onChanged:onChanged,
           cursorColor: Theme.of(context).colorScheme.onPrimary,
           decoration: InputDecoration(
             labelText: 'Search..',

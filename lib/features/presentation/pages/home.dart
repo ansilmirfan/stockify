@@ -8,13 +8,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 2,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: TabBarView(children: [
           HomeView(),
-          const WatchList(),
+          WatchList(),
         ]),
         bottomSheet: CustomTabbar(),
       ),

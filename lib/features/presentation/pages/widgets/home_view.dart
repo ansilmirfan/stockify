@@ -47,15 +47,18 @@ class _HomeViewState extends State<HomeView> {
     return Consumer<ApiData>(
       builder: (context, value, child) {
         if (value.isLoading) {
+          //--------loading state ----------------
           return const Expanded(
               child: Center(
             child: CircularProgressIndicator(),
           ));
         } else {
+          //----------no data state----------------
           if (value.list.isEmpty) {
             return _centerText(
                 'No results found for your search. Please try again with different keywords.');
           } else {
+            //----------completed state or data state------------
             return Expanded(
                 child: ListView.builder(
               itemCount: value.list.length,
@@ -63,7 +66,8 @@ class _HomeViewState extends State<HomeView> {
                 final data = value.list[index];
                 return CustomListtile(
                   title: data.the2Name ?? 'null',
-                  subtitle:" ${data.the8Currency}",
+                  subtitle: " ${data.the1Symbol}",
+                  currency: data.the8Currency,
                   isIcon: true,
                 );
               },

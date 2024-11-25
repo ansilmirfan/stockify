@@ -11,23 +11,31 @@ class WatchList extends StatelessWidget {
     return Scaffold(
       body: SafeArea(child: Consumer<LocalStorage>(
         builder: (context, value, child) {
-          if (value.data.isEmpty) {
-            return const Center(
-              child: Text('Looks like nothing in the watchlist'),
-            );
-          } else {
-            return ListView.builder(
-              itemCount: value.data.length,
-              itemBuilder: (context, index) => CustomListtile(
-                dismissible: true,
-                id: value.data[index].id,
-                title: value.data[index].companyName,
-                subtitle: value.data[index].symbol,
-                maxline: 1,
-                trailingTitle: 'nothing',
-                trailingSubtitle: 'nothingeler',
+          if (value.loading) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             );
+          } else {
+            if (value.data.isEmpty) {
+              return const Center(
+                child: Text('Looks like nothing in the watchlist'),
+              );
+            } else {
+              return ListView.builder(
+                itemCount: value.data.length,
+                itemBuilder: (context, index) => CustomListtile(
+                  dismissible: true,
+                  id: value.data[index].id,
+                  title: value.data[index].companyName,
+                  subtitle: value.data[index].symbol,
+                  maxline: 1,
+                  trailingTitle: 'nothing',
+                  trailingSubtitle: 'nothingeler',
+                ),
+              );
+            }
           }
         },
       )),

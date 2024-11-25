@@ -1,7 +1,5 @@
 // ignore_for_file: annotate_overrides
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:stockify/features/data/data_source/data_source.dart';
@@ -9,6 +7,7 @@ import 'package:stockify/features/data/model/search_model.dart';
 
 class ApiData extends ChangeNotifier {
   List<BestMatch> list = [];
+
   bool isLoading = false;
 
   Future search(String querry) async {

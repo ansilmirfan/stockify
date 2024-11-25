@@ -36,21 +36,23 @@ class _HomeViewState extends State<HomeView> {
             _searchField(context),
             controller.text.isEmpty
                 ? _centerText('No data available for today')
-                : _consumerBuilder()
+                : _consumerBuilder(context)
           ],
         ),
       ),
     );
   }
 
-  Consumer<ApiData> _consumerBuilder() {
+  Consumer<ApiData> _consumerBuilder(BuildContext context) {
     return Consumer<ApiData>(
       builder: (context, value, child) {
         if (value.isLoading) {
           //--------loading state ----------------
-          return const Expanded(
+          return Expanded(
               child: Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ));
         } else {
           //----------no data state----------------
